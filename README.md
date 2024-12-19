@@ -1,9 +1,9 @@
 
-# Melanoma Detection with Vision Transformers (ViT) and DinoV2 🚀🩺
+# Melanoma Detection with Vision Transformers (ViT) and DinoV2 🩺
 
 ## Overview 🌟
 
-Welcome to the melanoma detection project! This study leverages cutting-edge **Vision Transformers (ViT)** and **DinoV2** for advanced skin disease classification using the **ISIC 2020** dataset. Our goal is to develop a robust model that can distinguish between melanoma and benign rashes with high accuracy—potentially saving lives through early detection of skin cancer. With the help of **metadata integration** (age, gender, anatomical site) and advanced **data augmentation** techniques, we've pushed the boundaries of current AI models to make melanoma detection more accurate and reliable than ever before! 🌈
+Welcome to the melanoma detection project! This study leverages cutting-edge **Vision Transformers (ViT)** and **DinoV2** for advanced skin disease classification using the **ISIC 2020** dataset. Our goal is to develop a robust model that can distinguish between melanoma and benign rashes with high accuracy—potentially saving lives through early detection of skin cancer. With the help of **metadata integration** (age, gender, anatomical site) and advanced **data augmentation** techniques, we've pushed the boundaries of current AI models to make melanoma detection more accurate and reliable than ever before! 
 
 ## Key Contributions 🏆
 
@@ -50,15 +50,6 @@ By adding **age**, **gender**, and **anatomical site** as features, we significa
 - **Metadata** significantly boosted recall and F1-scores, especially for the **malignant class**.
 - The **augmentation techniques** helped reduce noise and improved model generalization.
   
-## Visualizations 🔍
-
-Check out some of the results in the form of confusion matrices and ROC curves below:
-
-![ViT Confusion Matrix](images/vit_cm.png)
-*Confusion matrix for ViT model (without and with metadata)*
-
-![ROC Curve](images/roc_curve.png)
-*ROC Curve showing the improved AUC with metadata integration*
 
 ## Getting Started 💻
 
