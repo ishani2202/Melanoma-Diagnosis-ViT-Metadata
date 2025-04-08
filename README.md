@@ -1,5 +1,5 @@
 
-# Melanoma Detection with Vision Transformers (ViT) and DinoV2 🩺
+# Melanoma Detection with Vision Transformers (ViT)- DinoV2 🩺
 
 ## Overview 🌟
 
