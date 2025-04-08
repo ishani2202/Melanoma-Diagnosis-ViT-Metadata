@@ -3,7 +3,7 @@
 
 ## Overview 🌟
 
-Welcome to the melanoma detection project! This study leverages cutting-edge **Vision Transformers (ViT)** and **DinoV2** for advanced skin disease classification using the **ISIC 2020** dataset. Our goal is to develop a robust model that can distinguish between melanoma and benign rashes with high accuracy—potentially saving lives through early detection of skin cancer. With the help of **metadata integration** (age, gender, anatomical site) and advanced **data augmentation** techniques, we've pushed the boundaries of current AI models to make melanoma detection more accurate and reliable than ever before! 
+Welcome to the melanoma detection project! We used a Vision Transformer (ViT) architecture pretrained with the DINOv2 self-supervised method for advanced skin disease classification using the **ISIC 2020** dataset. Our goal is to develop a robust model that can distinguish between melanoma and benign rashes with high accuracy—potentially saving lives through early detection of skin cancer. With the help of **metadata integration** (age, gender, anatomical site) and advanced **data augmentation** techniques, we've pushed the boundaries of current AI models to make melanoma detection more accurate and reliable than ever before! 
 
 ## Key Contributions 🏆
 
