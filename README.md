@@ -1,100 +1,140 @@
+# Melanoma Detection via Vision Transformers and Self-Supervised Learning
 
-# Melanoma Detection with Vision Transformers (ViT)- DinoV2 🩺
+## Overview
+This project investigates **transformer-based medical image classification** for early melanoma detection using dermoscopic imagery.  
+We evaluate **Vision Transformers (ViT)** and **DINOv2 self-supervised visual representations** on the **ISIC-2020 benchmark (33K+ images)**, focusing on **robust malignant lesion identification under class imbalance, imaging artifacts, and limited clinical context**.
 
-## Overview 🌟
+To approximate real diagnostic conditions, the pipeline integrates:
 
-Welcome to the melanoma detection project! We used a Vision Transformer (ViT) architecture pretrained with the DINOv2 self-supervised method for advanced skin disease classification using the **ISIC 2020** dataset. Our goal is to develop a robust model that can distinguish between melanoma and benign rashes with high accuracy—potentially saving lives through early detection of skin cancer. With the help of **metadata integration** (age, gender, anatomical site) and advanced **data augmentation** techniques, we've pushed the boundaries of current AI models to make melanoma detection more accurate and reliable than ever before! 
+- **Clinical metadata fusion** (age, sex, anatomical site)  
+- **Artifact-aware preprocessing** (hair removal, geometric augmentation)  
+- **Class-weighted optimization** to improve melanoma sensitivity  
 
-## Key Contributions 🏆
+The objective is to move beyond benchmark accuracy toward **clinically meaningful screening performance**.
 
-- **ViT & DinoV2 for Melanoma Classification**: We applied Vision Transformers (ViT) and DinoV2 models, achieving state-of-the-art results for melanoma detection.
-- **Metadata Integration**: Leveraging metadata like age, gender, and anatomical site significantly boosted model performance, especially for detecting malignant cases.
-- **Advanced Preprocessing**: Techniques like **hair removal** and **geometric transformations** helped clean up the data, improving the models' generalization capabilities.
-- **Class Imbalance Handling**: By using a **weighted loss function**, we tackled the issue of class imbalance, ensuring the model didn't favor benign lesions over melanoma.
+---
 
-## Dataset 📊
+## Research Questions
 
-We use the **ISIC 2020 dataset**, a comprehensive collection of **33,126 dermoscopic images** of benign and malignant skin lesions. The dataset helps train and evaluate models for melanoma classification. Additionally, we integrated smaller benchmark datasets like **HAM10000** and **Dermnet** for robustness testing.
+1. Can **self-supervised transformer representations** outperform conventional CNN-based dermatology pipelines?  
+2. Does **clinical metadata integration** materially improve **malignant recall and F1-score**?  
+3. How robust are transformer models under **noise, imbalance, and cross-dataset variation**?
 
-## Experiment Setup ⚙️
+---
 
-- **Training Data**: The dataset was split into training, validation, and test sets, with a final ratio of **72:8:20**.
-- **Model Training**: Vision Transformers (ViT) and DinoV2 were trained with both **raw and augmented data**. We used **binary cross-entropy loss** for melanoma detection and **categorical cross-entropy loss** for a broader classification task.
-- **Hardware**: Experiments were carried out on a system with **16GB RAM** and **8GB vRAM** (NVIDIA RTX 3060 GPU).
+## Dataset
 
-## Key Techniques 🧠
+**Primary Dataset**
+- **ISIC-2020:** 33,126 dermoscopic images  
+- Binary task: **melanoma vs benign lesion**
 
-### 1. **Vision Transformers (ViT)**  
-ViT splits images into non-overlapping patches, using self-attention mechanisms to capture global and local dependencies. This results in high performance in medical image tasks like melanoma detection.
+**Auxiliary Robustness Evaluation**
+- **HAM10000**
+- **DermNet**
 
-### 2. **DinoV2**  
-DinoV2 is a **self-supervised learning model** that enhances feature extraction by leveraging knowledge distillation. It helps in learning useful representations of images without the need for labeled data.
+**Split Strategy**
+- Train: **72%**  
+- Validation: **8%**  
+- Test: **20%**
 
-### 3. **Data Augmentation & Preprocessing**  
-We used techniques like **hair removal** through inpainting and **geometric transformations** to reduce noise and enhance model robustness.
+---
 
-### 4. **Metadata Integration**  
-By adding **age**, **gender**, and **anatomical site** as features, we significantly improved model recall and F1-scores, especially for the malignant (melanoma) class.
+## Methodology
 
-## Results 📈
+### Representation Learning
+- **Vision Transformer (ViT):** patch-based global attention for dermoscopic structure modeling  
+- **DINOv2:** self-supervised feature extraction without labeled supervision  
+- Comparative evaluation against **transformer baselines without metadata**
+
+### Clinical Context Fusion
+Patient metadata (**age, gender, anatomical site**) is embedded and fused with visual features to simulate **real diagnostic reasoning**, rather than pure image classification.
+
+### Robustness Engineering
+- Hair-artifact removal via **inpainting**
+- **Geometric and photometric augmentation**
+- **Class-weighted loss** to address melanoma under-representation
+
+---
+
+## Results
 
 | Model | Accuracy | Precision | Recall | F1-Score |
-|-------|----------|-----------|--------|----------|
-| ViT (Baseline) | 91.40% | 54.13% | 68.53% | 55.45% |
-| DinoV2 (Baseline) | 97.28% | 51.92% | 51.20% | 51.44% |
-| ViT with Metadata | 99.03% | 87.98% | 80.48% | 83.83% |
-| DinoV2 with Metadata | 97.92% | 55.82% | 51.52% | 52.21% |
+|-------|---------|-----------|--------|---------|
+| ViT (baseline) | 91.40% | 54.13% | 68.53% | 55.45% |
+| DINOv2 (baseline) | 97.28% | 51.92% | 51.20% | 51.44% |
+| **ViT + metadata** | **99.03%** | **87.98%** | **80.48%** | **83.83%** |
+| DINOv2 + metadata | 97.92% | 55.82% | 51.52% | 52.21% |
 
-### **Key Findings**:
-- **ViT with Metadata** outperformed all other models across accuracy, precision, recall, and F1-score, achieving a high **0.99** accuracy and **0.84** F1-score.
-- **Metadata** significantly boosted recall and F1-scores, especially for the **malignant class**.
-- The **augmentation techniques** helped reduce noise and improved model generalization.
-  
+### Key Findings
 
-## Getting Started 💻
+- **Clinical metadata fusion drives the dominant performance gain**, especially in **malignant recall**.  
+- **ViT + metadata achieves ~0.84 F1**, substantially outperforming transformer-only baselines.  
+- **Self-supervised visual features alone are insufficient** without contextual clinical information.
 
-### Requirements
+---
 
-- Python 3.8+
-- PyTorch
-- TensorFlow (optional)
-- NumPy
-- Matplotlib
-- scikit-learn
+## Clinical Significance
 
-### Installation
+Reliable melanoma screening requires:
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/melanoma-detection.git
-   ```
+- **High malignant recall**
+- Robustness to **class imbalance and imaging noise**
+- **Context-aware multimodal reasoning**
 
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+This study demonstrates that **metadata-aware transformer models** substantially improve diagnostic reliability, highlighting the importance of **clinical context in medical AI deployment**.
 
-### Training the Model
+---
 
-1. Prepare your dataset (ensure images are resized to **224x224 pixels**).
-2. Run the training script:
-   ```bash
-   python train.py --use_metadata --augmentation
-   ```
+## Visual Results
 
-3. Evaluate the model:
-   ```bash
-   python evaluate.py
-   ```
+*(Insert figures exported from the report into a `/figures` directory)*
 
-## Future Work 🔮
+Recommended structure:
 
-- **Enhanced Metadata Utilization**: Experiment with additional metadata, such as medical history or geographic data, to improve model sensitivity.
-- **Integration with Clinical Tools**: Work towards real-time melanoma detection in clinical environments, integrating with dermatology tools.
-- **Explainable AI (XAI)**: Further enhance model transparency with **SHAP** and **Grad-CAM** visualizations.
+```
+figures/
+ ├── preprocessing_examples.png
+ ├── augmentation_pipeline.png
+ ├── confusion_matrix_vit_metadata.png
+ ├── roc_curve_comparison.png
+ └── sample_predictions.png
+```
 
-## Conclusion 🎯
+Example usage in Markdown:
 
-This project demonstrates the power of **transformer-based architectures** like ViT and DinoV2 for melanoma detection, especially when combined with **metadata** and **advanced preprocessing techniques**. By pushing the limits of AI, we're taking a step closer to **early and accurate melanoma detection**, which could potentially save lives. 
+```markdown
+![Confusion Matrix](figures/confusion_matrix_vit_metadata.png)
+![ROC Curve](figures/roc_curve_comparison.png)
+```
 
-Feel free to dive in, explore the code, and improve on the work! 
+---
+
+## Technical Stack
+
+- **PyTorch**, Vision Transformers  
+- **DINOv2 self-supervised embeddings**  
+- NumPy, scikit-learn, matplotlib  
+- Dermoscopic preprocessing and augmentation pipeline  
+
+---
+
+## Limitations
+
+- Binary classification only  
+- Limited demographic metadata  
+- No prospective clinical validation  
+
+---
+
+## Future Work
+
+- Multiclass lesion taxonomy  
+- **Explainable AI** (Grad-CAM, SHAP) for dermatology trust  
+- Prospective validation in clinical workflows  
+- Federated or privacy-preserving medical training  
+
+---
+
+## Summary
+
+Transformer-based dermoscopic classification with **clinical metadata fusion** achieves **state-of-the-art melanoma detection performance (~0.84 F1)** on ISIC-2020, demonstrating the necessity of **context-aware multimodal learning** for reliable medical AI.
