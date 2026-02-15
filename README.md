@@ -87,20 +87,9 @@ This study demonstrates that **metadata-aware transformer models** substantially
 
 ## Visual Results
 
-*(Insert figures exported from the report into a `/figures` directory)*
 
-Recommended structure:
 
-```
-figures/
- ├── preprocessing_examples.png
- ├── augmentation_pipeline.png
- ├── confusion_matrix_vit_metadata.png
- ├── roc_curve_comparison.png
- └── sample_predictions.png
-```
 
-Example usage in Markdown:
 
 ```markdown
 ![Confusion Matrix](figures/confusion_matrix_vit_metadata.png)
