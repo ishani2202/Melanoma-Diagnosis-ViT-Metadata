@@ -15,6 +15,8 @@ The objective is to move beyond benchmark accuracy toward **clinically meaningfu
 ---
 
 (figures/metadata.png)
+<img src="figures/metadata.png" width="500"/>
+
 
 ## Research Questions
 
