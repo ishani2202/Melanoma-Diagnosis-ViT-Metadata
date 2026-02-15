@@ -13,7 +13,9 @@ To approximate real diagnostic conditions, the pipeline integrates:
 The objective is to move beyond benchmark accuracy toward **clinically meaningful screening performance**.
 
 ---
-![Confusion Matrix](figures/metadata.png)
+
+(figures/metadata.png)
+
 ## Research Questions
 
 1. Can **self-supervised transformer representations** outperform conventional CNN-based dermatology pipelines?  
