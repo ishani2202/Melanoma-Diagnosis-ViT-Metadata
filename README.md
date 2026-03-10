@@ -17,7 +17,7 @@ The objective is to move beyond benchmark accuracy toward **clinically meaningfu
 <img src="figures/metadata.png" width="500"/>
 
 
-## Research Questions
+## Research Questions for the project
 
 1. Can **self-supervised transformer representations** outperform conventional CNN-based dermatology pipelines?  
 2. Does **clinical metadata integration** materially improve **malignant recall and F1-score**?  
